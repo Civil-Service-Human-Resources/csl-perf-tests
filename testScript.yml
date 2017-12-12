@@ -1,5 +1,5 @@
 config:
-  target: "https://staging1.local"
+  target: "https://csl-testing-environment.local"
   phases:
     - duration: 60
       arrivalRate: 5
@@ -13,7 +13,7 @@ config:
     fields:
       - "keywords"
 scenarios:
-  - name: "Search and buy"
+  - name: "Search and select"
     flow:
       - post:
           url: "/search"
@@ -25,6 +25,6 @@ scenarios:
           url: "/details/{{ id }}"
       - think: 3
       - post:
-          url: "/cart"
+          url: "/course-name-id"
           json:
             productId: "{{ id }}"
