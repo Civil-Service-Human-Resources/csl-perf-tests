@@ -1,5 +1,5 @@
 config:
-  target: "https://csl-testing-environment.local"
+  target: "https://cslopenlrscontainer-openlrs.cloudapps.digital/"
   phases:
     - duration: 60
       arrivalRate: 5
@@ -8,6 +8,13 @@ config:
       rampTo: 50
     - duration: 600
       arrivalRate: 50
+  variables: 
+    firstVariable:
+      - "var1"
+      - "var2"
+    secondVariable:
+      - "foo"
+      - "bar"
   payload:
     path: "keywords.csv"
     fields:
@@ -17,7 +24,7 @@ scenarios:
     flow:
       - post:
           url: "/search"
-          body: "kw={{ keywords }}"
+          body: "kw={{ keywords }}" 
           capture:
             json: "$.results[0].id"
             as: "id"
